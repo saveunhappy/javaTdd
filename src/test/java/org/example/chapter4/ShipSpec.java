@@ -46,6 +46,20 @@ public class ShipSpec {
         ship.moveForward();
         assertEquals(ship.getLocation(), expected);
     }
-
+    public void whenTurnLeftThenLeft() {
+        Location expected = location.copy();
+        expected.turnLeft();
+        ship.turnLeft();
+        assertEquals(ship.getLocation(), expected);
+    }
+    /**
+     * 	右转功能
+     */
+    public void whenTurnRightThenRight() {
+        Location expected = location.copy();
+        expected.turnRight();
+        ship.turnRight();
+        assertEquals(ship.getLocation(), expected);
+    }
 
 }
