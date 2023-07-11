@@ -22,9 +22,30 @@ public class ShipSpec {
         ship = new Ship(location);
     }
     public void whenInstantiatedThenLocationIsSet() {
-//        Location location = new Location(
-//                new Point(21, 13), Direction.NORTH);
-//        Ship ship = new Ship(location);
         assertEquals(ship.getLocation(), location);
     }
+    /**
+     * 然而，不应这样编写单元测试。大多数UT新手都会落入这样的陷阱，即指定方法的结果时，
+     * 牵涉到它使用的方法、类和库的内部工作原理。这种做法在很多层面上都存在问题。
+     * 当前规范的单元中包含外部代码时，应考虑这样一点(至少在这里应该如此)，
+     * 即外部代码 已经过测试。我们知道外部代码没有问题，因为每次修改代码后，我们都运行了所有测试
+     **/
+//    public void givenNorthWhenMoveForwardThenYDecreases(){
+//         ship.moveForward();
+//         assertEquals(ship.getLocation().getPoint().getY(), 12);
+//    }
+//    public void givenEastWhenMoveForwardThenXIncreases() {
+//         ship.getLocation().setDirection(Direction.EAST);
+//         ship.moveForward();
+//         assertEquals(ship.getLocation().getPoint().getX(), 22);
+//    }
+
+    public void whenMoveForwardThenForward() {
+        Location expected = location.copy();
+        expected.forward();
+        ship.moveForward();
+        assertEquals(ship.getLocation(), expected);
+    }
+
+
 }
