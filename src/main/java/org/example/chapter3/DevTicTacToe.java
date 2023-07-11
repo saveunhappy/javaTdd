@@ -54,7 +54,9 @@ public class DevTicTacToe {
 		return 'X';
 	}
 	private boolean isWin() {
-		int playerTotal = lastPlayer * 3;
+		int playerTotal = lastPlayer*SIZE;
+		char diagonal1 = '\0';	// 从左上角到右下角的整条对角线和
+		char diagonal2 = '\0';	// 从左下角到右上角的整条对角线和
 		for (int i = 0; i < SIZE; i++) {
 			if ((board[0][i] + board[1][i] + board[2][i]) == playerTotal) {
 				// 一个玩家的棋子占据整条水平线就赢了
@@ -63,12 +65,11 @@ public class DevTicTacToe {
 				// 一个玩家的棋子占据整条垂直线就赢了
 				return true;
 			}
+			diagonal1 += board[i][i];
+			diagonal2 += board[i][SIZE - i - 1];
 		}
-		if ((board[0][0] + board[1][1] + board[2][2])
-				== playerTotal) {
-			return true;
-		} else if (playerTotal == (board[0][2] + board[1][1] +
-				board[2][0])) {
+		if (diagonal1 == playerTotal || diagonal2 == playerTotal) {
+			// 判断对角线
 			return true;
 		}
 		return false;
