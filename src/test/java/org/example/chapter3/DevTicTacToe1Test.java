@@ -5,6 +5,9 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertThrows;
 
 /**
  * 	需求 1 测试
@@ -38,7 +41,9 @@ public class DevTicTacToe1Test {
 	 */
 	@Test
 	public void whenXOutsideBoardThenRuntimeException() {
-		Assert.assertThrows(RuntimeException.class,()-> ticTacToe.play(5, 2));
+		RuntimeException exception = assertThrows(RuntimeException.class, () -> ticTacToe.play(5, 2));
+
+		assertThat(exception, instanceOf(RuntimeException.class));
 		// 期望引发 RuntimeException 异常。
 	}
 
@@ -47,7 +52,8 @@ public class DevTicTacToe1Test {
 	 */
 	@Test
 	public void whenYOutsideBoardThenRuntimeException() {
-		Assert.assertThrows(RuntimeException.class,()-> ticTacToe.play(2, 5));
+		RuntimeException exception = assertThrows(RuntimeException.class, () -> ticTacToe.play(2, 5));
+		assertThat(exception, instanceOf(RuntimeException.class));
 	}
 
 	/**
@@ -56,7 +62,8 @@ public class DevTicTacToe1Test {
 	@Test
 	public void whenOccupiedThenRuntimeException() {
 		ticTacToe.play(1, 2);
-		Assert.assertThrows(RuntimeException.class,()-> ticTacToe.play(1, 2));
+		RuntimeException exception = assertThrows(RuntimeException.class, () -> ticTacToe.play(1, 2));
+		assertThat(exception, instanceOf(RuntimeException.class));
 	}
 
 }
