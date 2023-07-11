@@ -29,7 +29,7 @@ public class DevTicTacToe {
 		checkAxis(y);
 		lastPlayer = nextPlayer();	// 记录下一次玩家
 		setBox(x, y, lastPlayer);
-		if (isWin()) {
+		if (isWin(x, y)) {
 			return lastPlayer + " is the winner";
 		}else if(isDraw()){
 			return "The result is draw";
@@ -56,23 +56,20 @@ public class DevTicTacToe {
 		}
 		return 'X';
 	}
-	private boolean isWin() {
+	protected boolean isWin(int x,int y) {
 		int playerTotal = lastPlayer*SIZE;
 		char diagonal1 = '\0';	// 从左上角到右下角的整条对角线和
 		char diagonal2 = '\0';	// 从左下角到右上角的整条对角线和
+		char horizontal = '\0';	// 水平的和
+		char vertical = '\0';	// 垂直的和
 		for (int i = 0; i < SIZE; i++) {
-			if ((board[0][i] + board[1][i] + board[2][i]) == playerTotal) {
-				// 一个玩家的棋子占据整条水平线就赢了
-				return true;
-			} else if ((board[i][0] + board[i][1] + board[i][2]) == playerTotal) {
-				// 一个玩家的棋子占据整条垂直线就赢了
-				return true;
-			}
 			diagonal1 += board[i][i];
 			diagonal2 += board[i][SIZE - i - 1];
+			horizontal += board[i][y-1];
+			vertical += board[x-1][i];
+
 		}
-		// 判断对角线
-		return diagonal1 == playerTotal || diagonal2 == playerTotal;
+		return diagonal1 == playerTotal || diagonal2 == playerTotal || horizontal == playerTotal || vertical == playerTotal;
 	}
 	public boolean isDraw() {
 		for (int i = 0; i < SIZE; i++) {
