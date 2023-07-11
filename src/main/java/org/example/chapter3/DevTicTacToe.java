@@ -31,8 +31,11 @@ public class DevTicTacToe {
 		setBox(x, y, lastPlayer);
 		if (isWin()) {
 			return lastPlayer + " is the winner";
+		}else if(isDraw()){
+			return "The result is draw";
+		}else{
+			return "No winner";
 		}
-		return "No winner";
 	}
 	private void checkAxis(int axis) {
 		if (axis < 1 || axis >3) {
@@ -70,5 +73,15 @@ public class DevTicTacToe {
 		}
 		// 判断对角线
 		return diagonal1 == playerTotal || diagonal2 == playerTotal;
+	}
+	public boolean isDraw() {
+		for (int i = 0; i < SIZE; i++) {
+			for (int j = 0; j < SIZE; j++) {
+				if (board[i][j] == '\0') {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 }
