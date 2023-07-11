@@ -16,6 +16,8 @@ public class DevTicTacToe {
 	// 为实现最后一个测试，应将既有棋子的位置存储在一个数组中。
 	private Character[][] board = {{'\0','\0','\0'},{'\0','\0','\0'},{'\0','\0','\0'}};
 	private char lastPlayer = '\0';
+	private static final int SIZE = 3;
+
 	/**
 	 * 	重构 play 方法
 	 * 	这个重构过程中，没有改变方法 play 的功能，其行为与以前完全相同，但代码的可读性更强了。
@@ -27,11 +29,8 @@ public class DevTicTacToe {
 		checkAxis(y);
 		lastPlayer = nextPlayer();	// 记录下一次玩家
 		setBox(x, y, lastPlayer);
-		for (int i = 0; i < 3; i++) {
-			if (board[0][i] == lastPlayer && board[1][i] == lastPlayer && board[2][i] == lastPlayer) {
-				// 一个玩家的棋子占据整条水平线就赢了
-				return lastPlayer + " is the winner";
-			}
+		if (isWin()) {
+			return lastPlayer + " is the winner";
 		}
 		return "No winner";
 	}
@@ -53,5 +52,14 @@ public class DevTicTacToe {
 			return 'O';
 		}
 		return 'X';
+	}
+	private boolean isWin() {
+		for (int i = 0; i < SIZE; i++) {
+			if ((board[0][i] + board[1][i] + board[2][i]) == (lastPlayer * SIZE)) {
+				// 一个玩家的棋子占据整条水平线就赢了
+				return true;
+			}
+		}
+		return false;
 	}
 }
