@@ -1,5 +1,6 @@
 package org.example.chapter3;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -20,8 +21,6 @@ public class DevTicTacToe1Test {
 
 	// 指定 ExpectedException 是一条规则
 	// 如果这种异常是在实例化前引发的，这个测试将失败；反之，测试将成功。
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
 
 	private DevTicTacToe ticTacToe;
 
@@ -39,8 +38,8 @@ public class DevTicTacToe1Test {
 	 */
 	@Test
 	public void whenXOutsideBoardThenRuntimeException() {
-		exception.expect(RuntimeException.class);		// 期望引发 RuntimeException 异常。
-		ticTacToe.play(5, 2);
+		Assert.assertThrows(RuntimeException.class,()-> ticTacToe.play(5, 2));
+		// 期望引发 RuntimeException 异常。
 	}
 
 	/**
@@ -48,8 +47,7 @@ public class DevTicTacToe1Test {
 	 */
 	@Test
 	public void whenYOutsideBoardThenRuntimeException() {
-		exception.expect(RuntimeException.class);
-		ticTacToe.play(2, 5);
+		Assert.assertThrows(RuntimeException.class,()-> ticTacToe.play(2, 5));
 	}
 
 	/**
@@ -58,8 +56,9 @@ public class DevTicTacToe1Test {
 	@Test
 	public void whenOccupiedThenRuntimeException() {
 		ticTacToe.play(1, 2);
-		exception.expect(RuntimeException.class);
-		ticTacToe.play(1, 2);
+		Assert.assertThrows(RuntimeException.class,()-> ticTacToe.play(1, 2));
+
+
 	}
 
 }
