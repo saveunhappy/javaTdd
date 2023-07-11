@@ -12,10 +12,19 @@ import static org.testng.Assert.*;
 
 @Test
 public class ShipSpec {
-    public void whenInstantiatedThenLocationIsSet() {
-        Location location = new Location(
+    private Ship ship;
+    private Location location;
+
+    @BeforeMethod
+    public void beforeTest(){
+        location = new Location(
                 new Point(21, 13), Direction.NORTH);
-        Ship ship = new Ship(location);
+        ship = new Ship(location);
+    }
+    public void whenInstantiatedThenLocationIsSet() {
+//        Location location = new Location(
+//                new Point(21, 13), Direction.NORTH);
+//        Ship ship = new Ship(location);
         assertEquals(ship.getLocation(), location);
     }
 }
