@@ -30,20 +30,32 @@ public class Ship {
 		location.turnRight();
 	}
 
-	public void receiveCommands(String commands) {
-
-		if (commands.charAt(0) == 'f') {
-			moveForward();
+	public String receiveCommands(String commands) {
+		StringBuilder output = new StringBuilder();
+		for(char command:commands.toCharArray()) {
+			boolean status = true;
+			switch (command) {
+				case 'f':
+					status = moveForward();
+					break;
+				case 'b':
+					status = moveBackward();
+					break;
+				case 'l':
+					turnLeft();
+					break;
+				case 'r':
+					turnRight();
+					break;
+				default:
+					break;
+			}
+			if (status) {
+				output.append("O");
+			} else {
+				output.append("X");
+			}
 		}
-		if (commands.charAt(0) == 'b') {
-			moveBackward();
-		}
-		if (commands.charAt(0) == 'l') {
-			turnLeft();
-		}
-		if (commands.charAt(0) == 'r') {
-			turnRight();
-		}
-
+		return output.toString();
 	}
 }
