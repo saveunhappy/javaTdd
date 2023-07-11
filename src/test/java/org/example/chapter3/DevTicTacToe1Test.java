@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThrows;
@@ -64,6 +66,10 @@ public class DevTicTacToe1Test {
 		ticTacToe.play(1, 2);
 		RuntimeException exception = assertThrows(RuntimeException.class, () -> ticTacToe.play(1, 2));
 		assertThat(exception, instanceOf(RuntimeException.class));
+	}
+	@Test
+	public void givenFirstTurnWhenNextPlayerThenX() {
+		assertEquals('X', ticTacToe.nextPlayer());
 	}
 
 }
