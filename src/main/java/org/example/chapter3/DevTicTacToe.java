@@ -25,8 +25,14 @@ public class DevTicTacToe {
 	public String play(int x,int y) {
 		checkAxis(x);
 		checkAxis(y);
-		setBox(x, y);
-		lastPlayer = nextPlayer();
+		lastPlayer = nextPlayer();	// 记录下一次玩家
+		setBox(x, y, lastPlayer);
+		for (int i = 0; i < 3; i++) {
+			if (board[0][i] == lastPlayer && board[1][i] == lastPlayer && board[2][i] == lastPlayer) {
+				// 一个玩家的棋子占据整条水平线就赢了
+				return lastPlayer + " is the winner";
+			}
+		}
 		return "No winner";
 	}
 	private void checkAxis(int axis) {
@@ -34,11 +40,11 @@ public class DevTicTacToe {
 			throw new RuntimeException("is outside board");
 		}
 	}
-	private void setBox(int x,int y) {
+	private void setBox(int x,int y,char lastPlayer) {
 		if (board[x-1][y-1] != '\0') {
 			throw new RuntimeException("Box is occupied");
 		} else {
-			board[x-1][y-1] = 'X';
+			board[x-1][y-1] = lastPlayer;
 		}
 	}
 
