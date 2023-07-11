@@ -57,8 +57,6 @@ public class DevTicTacToe1Test {
 	public void whenOccupiedThenRuntimeException() {
 		ticTacToe.play(1, 2);
 		Assert.assertThrows(RuntimeException.class,()-> ticTacToe.play(1, 2));
-
-
 	}
 
 }
