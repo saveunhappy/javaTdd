@@ -15,17 +15,19 @@ public class DevTicTacToe {
 
 	// 为实现最后一个测试，应将既有棋子的位置存储在一个数组中。
 	private Character[][] board = {{'\0','\0','\0'},{'\0','\0','\0'},{'\0','\0','\0'}};
-
+	private char lastPlayer = '\0';
 	/**
 	 * 	重构 play 方法
 	 * 	这个重构过程中，没有改变方法 play 的功能，其行为与以前完全相同，但代码的可读性更强了。
 	 *	@param x
 	 *	@param y
 	 */
-	public void play(int x,int y) {
+	public String play(int x,int y) {
 		checkAxis(x);
 		checkAxis(y);
 		setBox(x, y);
+		lastPlayer = nextPlayer();
+		return "No winner";
 	}
 	private void checkAxis(int axis) {
 		if (axis < 1 || axis >3) {
@@ -41,6 +43,9 @@ public class DevTicTacToe {
 	}
 
 	public char nextPlayer() {
+		if (lastPlayer == 'X') {
+			return 'O';
+		}
 		return 'X';
 	}
 }
