@@ -29,4 +29,8 @@ public class Ship {
 	public void turnRight() {
 		location.turnRight();
 	}
+
+	public void receiveCommands(String commands) {
+		moveForward();
+	}
 }
