@@ -68,10 +68,7 @@ public class DevTicTacToe {
 			diagonal1 += board[i][i];
 			diagonal2 += board[i][SIZE - i - 1];
 		}
-		if (diagonal1 == playerTotal || diagonal2 == playerTotal) {
-			// 判断对角线
-			return true;
-		}
-		return false;
+		// 判断对角线
+		return diagonal1 == playerTotal || diagonal2 == playerTotal;
 	}
 }
