@@ -44,8 +44,9 @@ public class Course101JBehave {
 	@When("I enter the value $value on a field named $fieldName")
 	public void enterValueOnFieldByName(String value, String fieldName) {
 		//  搜索TDD
-		$(By.name(fieldName)).setValue(value);
+//		$(By.name(fieldName)).setValue(value);
 //		$(By.id("searchInput")).setValue("Test-derven development");
+		$(By.id(fieldName)).setValue(value);
 
 	}
 	/**
@@ -55,8 +56,9 @@ public class Course101JBehave {
 	@When("I click the button $buttonName")
 	public void clickButtonByName(String buttonName) {
 		// 单击搜索按钮
-		$(By.name(buttonName)).click();
+//		$(By.name(buttonName)).click();
 //		$(By.className("cdx-search-input__end-button")).click();
+		$(By.className(buttonName)).click();
 
 	}
 
