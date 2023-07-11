@@ -54,9 +54,13 @@ public class DevTicTacToe {
 		return 'X';
 	}
 	private boolean isWin() {
+		int playerTotal = lastPlayer * 3;
 		for (int i = 0; i < SIZE; i++) {
-			if ((board[0][i] + board[1][i] + board[2][i]) == (lastPlayer * SIZE)) {
+			if ((board[0][i] + board[1][i] + board[2][i]) == playerTotal) {
 				// 一个玩家的棋子占据整条水平线就赢了
+				return true;
+			} else if ((board[i][0] + board[i][1] + board[i][2]) == playerTotal) {
+				// 一个玩家的棋子占据整条垂直线就赢了
 				return true;
 			}
 		}
