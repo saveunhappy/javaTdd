@@ -104,4 +104,17 @@ public class DevTicTacToe1Test {
 		String actual = ticTacToe.play(1, 3); // O
 		assertEquals("O is the winner", actual);
 	}
+
+	/**
+	 * 	一个玩家的棋子占据从左上角到右下角的整条对角线就赢了。
+	 */
+	@Test
+	public void whenPlayAndTopBottomDiagonalLineThenWinner() {
+		ticTacToe.play(1, 1);	// X
+		ticTacToe.play(2, 1);	// O
+		ticTacToe.play(2, 2);	// X
+		ticTacToe.play(2, 3);	// O
+		String actual = ticTacToe.play(3, 3);	// X
+		assertEquals("X is the winner", actual);
+	}
 }
