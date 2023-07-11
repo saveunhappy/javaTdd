@@ -31,9 +31,19 @@ public class Ship {
 	}
 
 	public void receiveCommands(String commands) {
-//		if (commands.charAt(0) == 'f') {
-//			moveForward();
-//		}
-		moveForward();
+
+		if (commands.charAt(0) == 'f') {
+			moveForward();
+		}
+		if (commands.charAt(0) == 'b') {
+			moveBackward();
+		}
+		if (commands.charAt(0) == 'l') {
+			turnLeft();
+		}
+		if (commands.charAt(0) == 'r') {
+			turnRight();
+		}
+
 	}
 }
