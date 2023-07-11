@@ -1,4 +1,4 @@
-package org.example;
+package org.example.chapter2;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.Test;

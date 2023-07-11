@@ -1,4 +1,4 @@
-package org.example;
+package org.example.chapter2;
 
 import org.jbehave.core.Embeddable;
 import org.jbehave.core.configuration.Configuration;

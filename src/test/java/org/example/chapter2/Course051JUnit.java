@@ -1,5 +1,6 @@
-package org.example;
+package org.example.chapter2;
 
+import org.example.FriendShip;
 import org.junit.*;
 
 import java.util.Arrays;
