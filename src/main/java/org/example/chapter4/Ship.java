@@ -7,6 +7,11 @@ public class Ship {
 
 	private final Location location;
 
+	private Planet planet;
+
+	public Planet getPlanet() {
+		return planet;
+	}
 	public Location getLocation() {
 		return location;
 	}
@@ -14,6 +19,12 @@ public class Ship {
 	public Ship(Location location) {
 		this.location = location;
 	}
+
+	public Ship(Location location, Planet planet) {
+		this.location = location;
+		this.planet = planet;
+	}
+
 	public boolean moveForward() {
 		return location.forward();
 	}
