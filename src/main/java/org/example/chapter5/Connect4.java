@@ -12,6 +12,8 @@ public class Connect4 {
             return String.valueOf(value);
         }
     }
+    //初始化，红色先下
+    private Color currentPlayer = Color.RED;
     public static final int COLUMNS = 7;
     public static final int ROWS = 6;
     private Color[][] board = new Color[COLUMNS][ROWS];
@@ -27,7 +29,8 @@ public class Connect4 {
                     getNumberOfDiscsInColumn(column - 1);
             if (numOfDiscs < ROWS) {
                 board[column - 1][numOfDiscs] =
-                        Color.RED;
+                        currentPlayer;
+                switchPlayer();
             }
         }
     }
@@ -43,6 +46,15 @@ public class Connect4 {
             return row;
         }
         return -1;
+    }
+
+    private void switchPlayer() {
+        if (Color.RED == currentPlayer) {
+            currentPlayer = Color.GREEN;
+        } else {
+            currentPlayer = Color.RED;
+        }
+        System.out.println("Current turn:" + currentPlayer);
     }
 
 
