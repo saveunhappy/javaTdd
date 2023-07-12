@@ -110,4 +110,11 @@ public class ShipSpec {
     public void whenInstantiatedThenPlanetIsStored() {
         assertEquals(ship.getPlanet(), planet);
     }
+
+    public void overpassEastBoundary() {
+        location.setDirection(Direction.EAST);
+        location.getPoint().setX(planet.getMax().getX());
+        ship.receiveCommands("f");
+        assertEquals(location.getX(), 1);
+    }
 }
