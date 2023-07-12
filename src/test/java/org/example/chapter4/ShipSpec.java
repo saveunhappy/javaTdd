@@ -14,12 +14,14 @@ import static org.testng.Assert.*;
 public class ShipSpec {
     private Ship ship;
     private Location location;
+    private Planet planet;
 
     @BeforeMethod
     public void beforeTest(){
-        location = new Location(
-                new Point(21, 13), Direction.NORTH);
-        ship = new Ship(location);
+        Point max = new Point(50, 50);
+        location = new Location(new Point(21, 13), Direction.NORTH);
+        planet = new Planet(max);
+        ship = new Ship(location,planet);
     }
     public void whenInstantiatedThenLocationIsSet() {
         assertEquals(ship.getLocation(), location);
