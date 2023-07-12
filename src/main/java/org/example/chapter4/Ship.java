@@ -16,10 +16,6 @@ public class Ship {
 		return location;
 	}
 
-	public Ship(Location location) {
-		this.location = location;
-	}
-
 	public Ship(Location location, Planet planet) {
 		this.location = location;
 		this.planet = planet;
