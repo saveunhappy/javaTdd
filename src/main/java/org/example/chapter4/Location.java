@@ -98,6 +98,7 @@ public class Location {
 	private int wrap(int point, int maxPoint) {
 		if (maxPoint > 0) {
 			if (point > maxPoint) {
+				//hard code
 				return 1;
 			} else if (point == 0) {
 				return maxPoint;
