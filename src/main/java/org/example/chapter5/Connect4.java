@@ -5,6 +5,10 @@ import java.util.StringJoiner;
 import java.util.regex.Pattern;
 
 public class Connect4 {
+    public int getNumberOfDiscs() {
+        return 0;
+    }
+
     public enum Color {
         RED('R'), GREEN('G'), EMPTY(' ');
         private final char value;
