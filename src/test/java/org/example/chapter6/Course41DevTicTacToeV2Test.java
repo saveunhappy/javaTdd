@@ -106,7 +106,7 @@ public class Course41DevTicTacToeV2Test {
 	public void givenExceptionWhenDropThenReturnFalse() {
 		doThrow(new MongoException("Bla")).when(mongoCollection).drop();
 		doReturn(mongoCollection).when(collection).getMongoCollection();
-		assertTrue(collection.drop());
+		assertFalse(collection.drop());
 	}
 
 }
