@@ -1,10 +1,14 @@
-package org.example.chapter2;
+package org.example.chapter2.phantojs;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import static com.codeborne.selenide.Selenide.*;
 import static org.hamcrest.CoreMatchers.startsWith;
@@ -18,7 +22,7 @@ import static org.junit.Assert.assertThat;
  *	Eclipse 安装：Help->Eclipse Marketplace->搜索Natural
  *	@author hzweiyongqiang
  */
-public class Course101JBehave {
+public class Course101JBehave111 {
 	/**
 	 * 	故事：src\main\resources\bdd\jbehave\stories\wikipediaSearch.story
 	 * 	执行：com.java.testdriven.chapter02.JBehaveTest
@@ -29,9 +33,17 @@ public class Course101JBehave {
 	 */
 	@Given("I go to Wikipedia homepage")
 	public void goToWikePage() {
+//		System.setProperty("webdriver.chrome.driver", "/Users/houjiangtao/devCode/chromedriver");
+//		Configuration.browser = "chrome";
+//		//  打开维基百科页面
+//		open("http://en.wikipedia.org/wiki/Main_Page");
+
+
 		System.setProperty("webdriver.chrome.driver", "/Users/houjiangtao/devCode/chromedriver");
 		Configuration.browser = "chrome";
-		//  打开维基百科页面
+		Configuration.headless = true;
+
+		// 打开维基百科页面
 		open("http://en.wikipedia.org/wiki/Main_Page");
 	}
 

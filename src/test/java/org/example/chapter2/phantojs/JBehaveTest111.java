@@ -1,4 +1,4 @@
-package org.example.chapter2;
+package org.example.chapter2.phantojs;
 
 import org.jbehave.core.Embeddable;
 import org.jbehave.core.configuration.Configuration;
@@ -14,8 +14,8 @@ import org.jbehave.core.steps.InstanceStepsFactory;
 
 import java.util.Properties;
 
-public class JBehaveTest extends JUnitStory {
-    public JBehaveTest() {
+public class JBehaveTest111 extends JUnitStory {
+    public JBehaveTest111() {
         configuredEmbedder().embedderControls()
                 .doGenerateViewAfterStories(true)
                 .doIgnoreFailureInStories(false)
@@ -40,7 +40,7 @@ public class JBehaveTest extends JUnitStory {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
-        return new InstanceStepsFactory(configuration(), new Course101JBehave());
+        return new InstanceStepsFactory(configuration(), new Course101JBehave111());
     }
 
     private class StoryResolver extends AbstractStoryPathResolver {
