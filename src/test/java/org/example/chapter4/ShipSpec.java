@@ -17,10 +17,13 @@ public class ShipSpec {
     private Planet planet;
 
     @BeforeMethod
-    public void beforeTest(){
-        Point max = new Point(50, 50);
+    public void beforeTest() {
         location = new Location(new Point(21, 13), Direction.NORTH);
-        planet = new Planet(max);
+        Point max = new Point(50, 50);
+        List<Point> obstacles = new ArrayList<Point>();
+        obstacles.add(new Point(44, 44));
+        obstacles.add(new Point(45, 46));
+        planet = new Planet(max,obstacles);
         ship = new Ship(location,planet);
     }
     public void whenInstantiatedThenLocationIsSet() {
@@ -116,5 +119,13 @@ public class ShipSpec {
         location.getPoint().setX(planet.getMax().getX());
         ship.receiveCommands("f");
         assertEquals(location.getX(), 1);
+    }
+
+    public void whenReceiveCommandsThenOForOkAndXForObstacle() {
+        List<Point> obstacles = new ArrayList<Point>();
+        obstacles.add(new Point(location.getX() + 1, location.getY()));
+        ship.getPlanet().setObstacles(obstacles);
+        String status = ship.receiveCommands("rflb");
+        assertEquals(status, "OXOO");
     }
 }
